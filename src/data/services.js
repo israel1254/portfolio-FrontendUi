@@ -8,71 +8,36 @@ export const services = [
   },
   {
     id: 2,
-    icon: "Layout",
-    title: "Frontend Development",
+    icon: "Smartphone",
+    title: "Responsive Design",
     description:
-      "Building responsive and performant web applications using React Next.js, and MongoDB ",
+      "Creating mobile-first responsive interfaces that work seamlessly across all devices and",
   },
   {
     id: 3,
-    icon: "Layout",
-    title: "Frontend Development",
+    icon: "Palette",
+    title: "UI/UX Design",
     description:
       "Building responsive and performant web applications using React Next.js, and MongoDB ",
   },
   {
-    id: 1,
-    icon: "Layout",
-    title: "Frontend Development",
+    id:4,
+    icon: "Code2",
+    title: "Custom Component",
+    description:
+      "Developing reusable and performant web applications using React Next.js, and MongoDB ",
+  },
+  {
+    id: 5,
+    icon: "Zap",
+    title: "Performance Optimization",
     description:
       "Building responsive and performant web applications using React Next.js, and MongoDB ",
   },
   {
-    id: 1,
-    icon: "Layout",
-    title: "Frontend Development",
-    description:
-      "Building responsive and performant web applications using React Next.js, and MongoDB ",
-  },
-  {
-    id: 1,
-    icon: "Layout",
-    title: "Frontend Development",
-    description:
-      "Building responsive and performant web applications using React Next.js, and MongoDB ",
-  },
-  {
-    id: 1,
-    icon: "Layout",
-    title: "Frontend Development",
-    description:
-      "Building responsive and performant web applications using React Next.js, and MongoDB ",
-  },
-  {
-    id: 1,
-    icon: "Layout",
-    title: "Frontend Development",
-    description:
-      "Building responsive and performant web applications using React Next.js, and MongoDB ",
-  },
-  {
-    id: 1,
-    icon: "Layout",
-    title: "Frontend Development",
-    description:
-      "Building responsive and performant web applications using React Next.js, and MongoDB ",
-  },
-  {
-    id: 1,
-    icon: "Layout",
-    title: "Frontend Development",
-    description:
-      "Building responsive and performant web applications using React Next.js, and MongoDB ",
-  },
-  {
-    id: 1,
-    icon: "Layout",
-    title: "Frontend Development",
+    id: 6,
+    icon: "GitBranch",
+    title: "Code Review & Consulting",
     description:
       "Building responsive and performant web applications using React Next.js, and MongoDB ",
   },

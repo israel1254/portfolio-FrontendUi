@@ -45,7 +45,7 @@ const Skills = () => {
     }
 
   return (
-      <section id='skills' className='relative py-20 bg-black overflow-hidden'>
+      <section id='skill' className='relative py-20 bg-black overflow-hidden'>
           <div className="absolute inset-0 overflow-hidden">
               <div className='absolute top-1/4 left-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl opacity-50' />
               <div className='absolute bottom-1/4 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl opacity-50' />
@@ -76,7 +76,7 @@ const Skills = () => {
 
                                   <div className="space-y-5">
                                       {
-                                          categorySkills.map((skill, skillIndex) => {
+                                          categorySkills.map((skill,skillIndex) => {
                                           const IconComponent = Icons[skill.icon] || Icons.Code2;
                                           const proficiency = getProficiencyLevel(skill.level);
 
