@@ -4,7 +4,7 @@ import { skills } from '../../data/skills';
 import FadeIn from '../animations/Fadein';
 
 const Skills = () => {
-
+    
     const skillCategories = {
         'Frontend Development': [
             skills.find(s => s.name === "React.js"),
@@ -13,16 +13,22 @@ const Skills = () => {
             skills.find(s => s.name === "Next.js"),
             skills.find(s => s.name === "Tailwind CSS"),
             skills.find(s => s.name === "Redux"),
+            skills.find(s => s.name === "Flater"),
         ].filter(Boolean),
-        'Backend & APIs': [
+        'Backend , APIs & Database': [
             skills.find(s => s.name === "Node.js"),
             skills.find(s => s.name === "REST APIs"),
+            skills.find(s => s.name === "Python"),
+            skills.find(s => s.name === "PostgreSQL"),
+            skills.find(s => s.name === "mySQL"),
+            skills.find(s => s.name === "MongoDb"),
         ].filter(Boolean),
         'Tools & Others': [
             skills.find(s => s.name === "Git & Github"),
             skills.find(s => s.name === "Responsive Design"),
             skills.find(s => s.name === "Figma"),
             skills.find(s => s.name === "Vite"),
+            skills.find(s => s.name === "Mui"),
         ].filter(Boolean),
     };
 

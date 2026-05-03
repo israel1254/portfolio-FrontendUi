@@ -1,12 +1,25 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import FadeIn from '../animations/Fadein';
 import { ChevronLeft, ChevronRight, Quote, Star } from 'lucide-react';
-import { testimonials } from '../../data/testimonials';
+import axios from 'axios';
 
 const Testimonials = () => {
 
     const [currentIndex, setCurrentIndex] = useState(0);
     const scrollContainerRef = useRef(null);
+    const [testimonials, setTestimonials] = useState([])
+    
+    
+    useEffect(() => {
+        const getAllTestimonial = async () => {
+            const { data } = await axios.get(
+                "http://localhost:4100/api/v1/testimonial/getall", { withCredentials: true }
+            );
+            setTestimonials(data.testimoni);
+        };
+        getAllTestimonial();
+    }, [])
+    
     const scrollToIndex = (index) => {
         setCurrentIndex(index);
         if (scrollContainerRef.current) {
@@ -56,14 +69,15 @@ const Testimonials = () => {
                               {
                                   testimonials.map((testimonial, index) => (
                                       <div className="w-full shrink-0 px-4"
-                                          key={testimonial.id}
+                                          key={testimonial._id}
                                           style={{scrollSnapAlign:'start'}}
                                       >
                                           <div className="max-w-4xl mx-auto">
                                               <div className="flex flex-col md:flex-row gap-6 items-stretch">
                                                   <div className="relative w-full md:w-1/3">
                                                       <div className="relative h-72 rounded-2xl overflow-hidden">
-                                                          <img src={testimonial.image} alt={testimonial.name} className='w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-300' />
+                                                          <img src={testimonial.svg && testimonial.svg.url}
+                                                              alt={testimonial.name} className='w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-300' />
                                                           <div className="absolute bottom-4 left-4 right-4">
                                                               <div className="bg-black/60 rounded-xl p-4 shadow-lg">
                                                                   <div className="">
@@ -82,7 +96,7 @@ const Testimonials = () => {
                                                       <div className="mb-6">
                                                           <Quote className='w-7 h-7 text-primary mb-4 opacity-50' />
                                                           <p className='text-lg md:text-xl text-white leading-relaxed'>
-                                                              "{testimonial.quote}"
+                                                              "{testimonial.testimonis}"
                                                           </p>
                                                       </div>
                                                       <div className="flex items-center justify-between">
@@ -91,7 +105,7 @@ const Testimonials = () => {
                                                                   {testimonial.name}
                                                               </div>
                                                               <div className="text-white/60 text-sm">
-                                                                  {testimonial.role},{testimonial.company}
+                                                                  {testimonial.designation},{testimonial.company}
                                                               </div>
                                                           </div>
                                                           <div className="flex gap-1">

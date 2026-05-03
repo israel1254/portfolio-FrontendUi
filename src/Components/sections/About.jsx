@@ -1,12 +1,64 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import RedialGradientBackground from '../backgrounds/RedialGradientBackground';
 import FadeIn from '../animations/Fadein';
 import { Code2, Download, Sparkles } from 'lucide-react';
 import { ABOUT_STATS, PERSONAL_INFO } from '../../utils/constants';
-import { SiMongodb, SiNextdotjs, SiNodedotjs, SiReact, SiTailwindcss, SiTypescript } from 'react-icons/si';
-// import { skills } from '../../data/skills';
+import { SiDart, SiFlutter, SiJavascript, SiMongodb, SiMysql, SiNextdotjs, SiNodedotjs, SiPostgresql, SiPython, SiReact, SiTailwindcss, SiTypescript } from 
+'react-icons/si';
+import {  Send  } from 'lucide-react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+
 
 const About = () => {
+
+    const [user, setUser] = useState({});
+    const [downloading, setDownloading] = useState(false);
+    
+    useEffect(() => {
+        const getMyProfile = async () => {
+            const { data } = await axios.get(
+                "http://localhost:4100/api/v1/user/me/portfolio", { withCredentials: true }
+            );
+            setUser(data.user);
+        };
+        getMyProfile();
+    }, []);
+
+    const handleDownload = () => {
+        // 1. Safety check
+        if (!user?.resume?.url) {
+            alert("No resume URL found!");
+            return;
+        }
+
+        try {
+            setDownloading(true);
+
+            // 2. Modify the URL to force a download via Cloudinary's attachment flag
+            // This changes '.../upload/v123...' to '.../upload/fl_attachment/v123...'
+            const downloadUrl = user.resume.url.replace('/upload/', '/upload/fl_attachment/');
+
+            // 3. Create a temporary anchor element
+            const link = document.createElement('a');
+            link.href = downloadUrl;
+
+            // 4. Set the downloaded file name
+            link.setAttribute('download', `${user.fullName || 'User'}_Resume.pdf`);
+
+            // 5. Append, click, and remove
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+        } catch (error) {
+            console.error("Download failed:", error);
+            alert("Something went wrong with the download.");
+        } finally {
+            // Set a small timeout so the 'Downloading...' state is visible briefly
+            setTimeout(() => setDownloading(false), 1000);
+        }
+    };
 
     const skills = [
         { name: 'React.js', icon: SiReact, color: '#61DAFB' },
@@ -14,7 +66,13 @@ const About = () => {
         { name: 'TypeScript', icon: SiTypescript, color: '#317BC6' },
         { name: 'Tailwind CSS', icon: SiTailwindcss, color: '#06BB6D4' },
         { name: 'Node.js', icon: SiNodedotjs, color: '#339933' },
-        { name: 'MongoDbb', icon: SiMongodb, color: '#47A248' }
+        { name: 'MongoDbb', icon: SiMongodb, color: '#47A248' }, 
+        { name: 'Python', icon: SiPython, color: '#61DAFB' },
+        { name: 'PostgreSQL', icon: SiPostgresql, color: '#61DAFB' },
+        { name: 'mySQL', icon: SiMysql, color: '#61DAFB' },
+        { name: 'JavaScrept', icon: SiJavascript, color: '#61DAFB' },
+        { name: 'Dart', icon: SiDart, color: '#61DAFB' },
+        { name: 'Flutter', icon: SiFlutter, color: '#61DAFB' },
     ]
     
   return (
@@ -40,11 +98,9 @@ const About = () => {
                       </FadeIn>
                       <FadeIn delay={200}>
                           <div className="flex flex-col gap-4">
-                              {
-                                 PERSONAL_INFO.bio.map((paragraph, index) => ( <p key={index}   className='text-base text-white/70 leading-relaxed'>
-                                      {paragraph}
-                                  </p> ))
-                              }
+                                  <p className='text-base text-white/70 leading-relaxed'>
+                                      {user.aboutMe} 
+                                  </p> 
                           </div>
                       </FadeIn>
                   </div>
@@ -67,10 +123,13 @@ const About = () => {
                   </FadeIn>
                   
                   <FadeIn delay={400}>
-                          <button onClick={() => window.open(PERSONAL_INFO.resume, '_blank')} className='inline-flex items-center gap-3 bg-white hover:bg-white/90 text-black rounded-full px-8 py-4 text-base font-medium transition-all duration-300  group' >
-                          <Download className='w-5 h-5 group-hover:translate-y-0.5 transition-transform duration-300'/>
-                          Download Resume
+                      
+                          <button onClick={handleDownload} disabled={downloading}
+       className='inline-flex items-center gap-3 bg-white hover:bg-white/90 text-black rounded-full px-8 py-4 text-base font-medium transition-all duration-300  group cursor-pointer' >
+                          <Download className='w-5 h-5 group-hover:translate-y-0.5 transition-transform duration-300 '/>
+                              {downloading ? "Downloading..." : "Download Resume"}
                       </button>
+                      
                   </FadeIn>
                   </div>
 
@@ -120,7 +179,7 @@ const About = () => {
                               <div className="relative bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-primary/30 transition-all duration-300 h-full">
                                   <div className="grid grid-cols-3 gap-6 text-center">
                                       <div>
-                                          <div className="text-2xl font-bold text-primary mb-2">100%</div>
+                                          <div className="text-2xl font-bold text-primary mb-2">90%</div>
                                           <div className="text-xl text-white/60">Client Satisfaction</div>
                                       </div>
                                       <div>
@@ -145,6 +204,7 @@ const About = () => {
                           <p className='text-sm text-white/60'>
                               Technologies I work with to build amazing pro
                           </p>
+                          
                       </div>
                       <div className="grid grid-cols-2 md:grid-cols-6 gap-4 max-w-4xl">
                           {
@@ -161,6 +221,15 @@ const About = () => {
                                   
                               ))
                           }
+                      </div>
+
+                      <div className="w-[50%]">
+                        <Link to="/allskill">
+                        <button type='submit' className='w-full px-6 py-3 bg-linear-to-r  from-primary/10 to-primary text-white font-medium rounded-xl hover:shadow-2xl hover:shadow-primary/30 transition-all duration-300 flex items-center justify-center gap-2 group cursor-pointer'>
+                                  <span>View All Skills & Software App</span>
+                                  <Send className='w-5 h-5 group-hover:translate-x-1 transition-transform duration-300'/>
+                         </button>
+                         </Link>
                       </div>
                   </div>
               </FadeIn>

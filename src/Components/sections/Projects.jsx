@@ -1,15 +1,30 @@
-import React, { useRef, useState } from 'react';
-import { categories, projects } from '../../data/projects';
-import { Sparkles, Target, Globe, Palette, Zap, ChevronLeft, Briefcase, ChevronRight } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+
+import { Sparkles, Target, Globe, Palette, Zap, ChevronLeft, Briefcase, ChevronRight, Network } from 'lucide-react';
 import FadeIn from '../animations/Fadein';
 import ProjectCard from '../ui/ProjectCard';
+import axios from 'axios';
 
 const Projects = () => {
-
+    
+     
     const [activeCategory, setActiveCategory] = useState('All')
     const [currentIndex, setCurrentIndex] = useState(0);
     const scrollContainerRef = useRef(null);
-
+  const categories = ['All', 'Web Apps', 'UI Components', 'Full Stack','ERP Software'];
+  const [projects, setProject] = useState([]);
+  
+  useEffect(() => {
+    const getMyProject = async () => {
+      
+        const { data } = await axios.get(
+          "http://localhost:4100/api/v1/project/getall", { withCredentials: true }
+        );
+        setProject(data.projects);
+    };
+    getMyProject();
+  }, [])
+  
     const filteredProjectS = activeCategory === 'All' ? projects : projects.filter(project => project.category === activeCategory);
 
   const handleCategoryChange = (category) => {
@@ -47,7 +62,8 @@ const Projects = () => {
     'All': Target,
     'Web Apps': Globe ,
     'UI Components': Palette ,
-    'Full Stack':Zap,
+    'Full Stack': Zap,
+    'ERP Software': Network,
   }
   return (
     <section id="projects" className="relative py-20 bg-black overflow-hidden"> 
@@ -102,7 +118,7 @@ const Projects = () => {
               <div className="flex gap-6 pb-4">
                 {
                   filteredProjectS.map((project) => (
-                    <div key={project.id} className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] shrink-0 snap-start">
+                    <div key={project._id} className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] shrink-0 snap-start">
                       <ProjectCard project={project} />
                     </div>
                   ))

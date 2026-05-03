@@ -1,10 +1,22 @@
 import { Dribbble, Github, Heart, Linkedin, Mail, MapPin, Twitter } from 'lucide-react';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import FadeIn from '../animations/Fadein';
 import { NAV_LINKS, PERSONAL_INFO, SOCIAL_LINKS } from '../../utils/constants';
 import { scrollToSection } from '../../hooks/useScrollSpy';
+import axios from 'axios';
 
 const Footer = () => {
+
+   const [user, setUser] = useState({});
+      useEffect(() => {
+          const getMyProfile = async () => {
+              const { data } = await axios.get(
+                  "http://localhost:4100/api/v1/user/me/portfolio", { withCredentials: true }
+              );
+              setUser(data.user);
+          };
+          getMyProfile();
+      }, [])
 
   const socialIcons = {
     github: Github,
@@ -23,18 +35,18 @@ const Footer = () => {
           <FadeIn delay={0}>
             <div >
               <h3 className='text-3xl font-bold bg-linear-to-r from-primary/80 via-primary to-primary/80 bg-clip-text text-transparent mb-6'>
-                {PERSONAL_INFO.name.split(' ')[0]}
+                {user.fullName}
               </h3>
               <p className='text-white/60 text-sm mb-6 leading-relaxed'>
-                {PERSONAL_INFO.tagline}
+                crafting seamless digital experiences with modern web technology 
               </p>
               <div className="space-y-3">
-                <a href={`mailto:${PERSONAL_INFO.email}`} className='group flex items-center gap-3 p-3 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 hover:border-primary/30 transition-all duration-300'>
+                <a href={`mailto:${user.email}`} className='group flex items-center gap-3 p-3 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 hover:border-primary/30 transition-all duration-300'>
                   <div className="p-2 bg-primary/10 rounded-lg">
                     <Mail className='w-4 h-4 text-primary'/>
                   </div>
                   <span className='text-white/20 text-sm group-hover:text-white transition-colors'>
-                    {PERSONAL_INFO.email}
+                    {user.email}
                   </span>
                 </a>
                 <div className="flex items-center gap-3 p-3 bg-white/5 border-white/10 border rounded-xl">

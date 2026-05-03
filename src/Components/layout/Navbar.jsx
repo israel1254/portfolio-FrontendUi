@@ -2,13 +2,25 @@ import React, { useEffect, useState } from 'react';
 import {Code, Menu, X} from 'lucide-react'
 import { NAV_LINKS, PERSONAL_INFO } from '../../utils/constants';
 import { scrollToSection, useScrollSpy } from '../../hooks/useScrollSpy';
-
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const Navbar = () => {
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const activeSection = useScrollSpy(NAV_LINKS.map(links => links.id));
+
+    const [user, setUser] = useState({});
+    useEffect(() => {
+        const getMyProfile = async () => {
+            const { data } = await axios.get(
+                "http://localhost:4100/api/v1/user/me/portfolio", { withCredentials: true }
+            );
+            setUser(data.user);
+        };
+        getMyProfile();
+    }, [])
 
     useEffect(() => {
         const handleScroll = () => {
@@ -29,13 +41,17 @@ const Navbar = () => {
           
           <div className="max-w-[1320px] mx-auto px-5">
               <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-4">
-                      <Code className="w-6 h-6 text-primary" />
-                      
-                      <button onClick={()=>window.scrollTo({top: 0, behavior: 'smooth'})} className=" text-2xl font-bold bg-linear-to-r from-primary/50 to-primary/30 bg-clip-text text-transparent hover:opacity-80 transition-opacity" aria-label="home">
-                          {PERSONAL_INFO.name.split(' ')[0]}
+
+                  <div className="flex items-center gap-4 ">
+                    <Link to="/">
+                      <Code className="w-6 h-6 text-primary cursor-pointer" />
+                      </Link>
+                      <button onClick={()=>window.scrollTo({top: 0, behavior: 'smooth'})} className=" text-2xl font-bold bg-linear-to-r from-primary/50 to-primary/30 bg-clip-text text-transparent hover:opacity-80 transition-opacity" aria-label="home cursor-pointer">
+                          {user.fullName}
                       </button>
+                      
                   </div>
+
                   <nav className='hidden md:flex items-center gap-7'>
                       { NAV_LINKS.map( (link) => (
                           <button key={link.id} onClick={() => handleNavClick(link.id)} className={`text-base font-medium transition-all duration-300 ${activeSection === link.id ?'text-white' : 'text-white/70 hover:text-white'}`}>
