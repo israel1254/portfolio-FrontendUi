@@ -89,7 +89,7 @@ const Contact = () => {
                                   <label htmlFor='email' className='block text-sm font-medium text-white/80 mb-2'>
                                       Email
                                   </label>
-                                  <input type="email" id='email' value={email} type="email" onChange={(e) => setEmail(e.target.value)} placeholder='Your Email' className='w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none fucus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all duration-300' />
+                                  <input type="email" id='email' value={email} onChange={(e) => setEmail(e.target.value)} placeholder='Your Email' className='w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none fucus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all duration-300' />
                               </div>
                               <div>
                                   <label htmlFor='message' className='block text-sm font-medium text-white/80 mb-2'>

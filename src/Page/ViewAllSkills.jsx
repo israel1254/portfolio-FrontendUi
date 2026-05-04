@@ -1,7 +1,7 @@
 import React from 'react';
 import * as Icons from "lucide-react"
 import { useEffect, useState } from 'react'
-import FadeIn from '../components/backgrounds/RedialGradientBackground.jsx';
+import FadeIn from '../Components/backgrounds/RedialGradientBackground.jsx';
 import axios from 'axios';
 import Skeleton from 'react-loading-skeleton';
 
