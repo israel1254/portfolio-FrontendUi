@@ -1,9 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import FadeIn from '../animations/Fadein';
-import { ChevronDown, Facebook, Github, Instagram, LucideLinkedin, Star, Twitter, Youtube } from 'lucide-react';
+import { ChevronDown, Facebook, Github, Instagram, LinkedinIcon, LucideLinkedin, Star, Twitter, Youtube } from 'lucide-react';
 import { PERSONAL_INFO, STATS } from '../../utils/constants';
-import { SiReact, SiNextdotjs, SiTailwindcss, SiNodedotjs, SiMongodb, SiTelegram, SiYoutube, SiInstagram, SiGithub, SiFacebook, SiLinkedin } from 'react-icons/si'
+import { SiReact, SiNextdotjs, SiTailwindcss, SiNodedotjs, SiMongodb, SiTelegram, SiYoutube, SiInstagram, SiGithub, SiFacebook } from 'react-icons/si'
 
 import { scrollToSection } from '../../hooks/useScrollSpy';
 import RedialGradientBackground from '../backgrounds/RedialGradientBackground';
@@ -11,7 +11,7 @@ import { useState, useEffect } from "react";
 import {motion, animate, useMotionValue, useTransform } from "framer-motion";
 import { Link } from 'react-router-dom';
 
-const words = ["FullStack Developer", "Freelancer", "AI Engineer"];
+const words = ["FullStack Developer", "Freelancer", "ERP Software Developer"];
 
 const Hero = () => {
     const [index, setIndex] = useState(0);
@@ -23,12 +23,14 @@ const Hero = () => {
     useEffect(() => {
         const getMyProfile = async () => {
             const { data } = await axios.get(
-                "http://localhost:4100/api/v1/user/me/portfolio", { withCredentials: true }
+                "https://mymern-stack-website-backend.onrender.com/api/v1/user/me/portfolio", { withCredentials: true }
             );
             setUser(data.user);
+            console.log(data.user)
         };
         getMyProfile();
     }, [])
+    
     
 
     useEffect(() => {
@@ -74,7 +76,7 @@ const Hero = () => {
 
                         <FadeIn delay={200}>
                             <p className='text-lg text-white/70 max-w-[[550px] mb-8'>
-                                Building modern, scalable web application with React js, Node js and cutting-edge technologies. Transforming ideas into exceptional digital experiences. further I create the best and most popular content creatives with social media content for my client
+                                Building modern, scalable web application with  Node js, python and cutting-edge technologies. Transforming ideas into exceptional digital experiences. further I create the best and most popular content creatives with social media content for my client
                             </p>
                         </FadeIn>
 
@@ -119,7 +121,7 @@ const Hero = () => {
                                             <div className="flex items-center gap-4 bg-black/40 backdrop-blur-sm border border-white/10 rounded-full px-6 py-3">
                                                 <Link to={user.linkedInURL} target='_blank'>
                                                     <div className="w-6 h-6 flex items-center justify-center    hover:scale110 transition-transform duration-300">
-                                                        <SiLinkedin className="w-full h-full text-primary" />
+                                                        <LinkedinIcon className="w-full h-full text-primary" />
                                                     </div>
                                                 </Link>
                                                 <Link to={user.facebookURL} target='_blank'>

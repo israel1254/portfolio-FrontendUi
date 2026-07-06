@@ -1,7 +1,7 @@
 export const PERSONAL_INFO = {
   name: "Israel Girma",
-  title: "Full Stack Developer & Vibe Coder",
-  email: "girmaisrael108@gmail.com",
+  title: "Full Stack & ERP Software Developer",
+  email: "girmaisrael105@gmail.com",
   location: "Ethiopia",
   tagline: "crafting seamless digital experiences with modern web technology ",
   resume: "resume.pdf",

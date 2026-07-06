@@ -15,7 +15,7 @@ const Navbar = () => {
     useEffect(() => {
         const getMyProfile = async () => {
             const { data } = await axios.get(
-                "http://localhost:4100/api/v1/user/me/portfolio", { withCredentials: true }
+                "https://mymern-stack-website-backend.onrender.com/api/v1/user/me/portfolio", { withCredentials: true }
             );
             setUser(data.user);
         };

@@ -9,9 +9,9 @@ export const services = [
   {
     id: 2,
     icon: "Palette",
-    title: "AI Engineering",
+    title: "ERP Software",
     description:
-      "developing, maintain, deploying, and scaling Artificial Intelligence and Machine Learning (ML) models into real-world applications",
+      "developing, maintain, deploying, and scaling ERP Software with Odoo models into real-world applications",
   },
   {
     id: 3,

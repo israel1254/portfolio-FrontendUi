@@ -11,7 +11,7 @@ const ViewAllSkills = () => {
         const getAllSkills = async () => {
             
                 const { data } = await axios.get(
-                    "http://localhost:4100/api/v1/skill/getall", { withCredentials: true }
+                    "https://mymern-stack-website-backend.onrender.com/api/v1/skill/getall", { withCredentials: true }
                 );
             setSkills(data.skill);
         };

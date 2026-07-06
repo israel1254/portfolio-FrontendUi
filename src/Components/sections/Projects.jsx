@@ -18,7 +18,7 @@ const Projects = () => {
     const getMyProject = async () => {
       
         const { data } = await axios.get(
-          "http://localhost:4100/api/v1/project/getall", { withCredentials: true }
+          "https://mymern-stack-website-backend.onrender.com/api/v1/project/getall", { withCredentials: true }
         );
         setProject(data.projects);
     };

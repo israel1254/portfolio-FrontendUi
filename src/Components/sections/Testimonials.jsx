@@ -13,7 +13,7 @@ const Testimonials = () => {
     useEffect(() => {
         const getAllTestimonial = async () => {
             const { data } = await axios.get(
-                "http://localhost:4100/api/v1/testimonial/getall", { withCredentials: true }
+                "https://mymern-stack-website-backend.onrender.com/api/v1/testimonial/getall", { withCredentials: true }
             );
             setTestimonials(data.testimoni);
         };
