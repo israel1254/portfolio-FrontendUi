@@ -26,7 +26,7 @@ const Hero = () => {
                 "https://mymern-stack-website-backend.onrender.com/api/v1/user/me/portfolio", { withCredentials: true }
             );
             setUser(data.user);
-            console.log(data.user)
+            
         };
         getMyProfile();
     }, [])
@@ -113,7 +113,7 @@ const Hero = () => {
                                     </div>
 
                                     <div className="relative rounded-2xl overflow-hidden m-[1px] h-[calc(100%-2px)]">
-                                        <img src={user.avatar && user.avatar.url} alt={user.fullName} className='w-full h-full object-cover' />
+                                        <img src={user.avatar && user.avatar.url} alt={user?.fullName} className='w-full h-full object-cover' />
                                     </div>
 
                                     <div className="absolute bottom-6 left-6 z-20">

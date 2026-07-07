@@ -44,7 +44,7 @@ const About = () => {
             link.href = downloadUrl;
 
             // 4. Set the downloaded file name
-            link.setAttribute('download', `${user.fullName || 'User'}_Resume.pdf`);
+            link.setAttribute('download', `${user?.fullName || 'User'}_Resume.pdf`);
 
             // 5. Append, click, and remove
             document.body.appendChild(link);

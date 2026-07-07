@@ -47,7 +47,7 @@ const Navbar = () => {
                       <Code className="w-6 h-6 text-primary cursor-pointer" />
                       </Link>
                       <button onClick={()=>window.scrollTo({top: 0, behavior: 'smooth'})} className=" text-2xl font-bold bg-linear-to-r from-primary/50 to-primary/30 bg-clip-text text-transparent hover:opacity-80 transition-opacity" aria-label="home cursor-pointer">
-                          {user.fullName}
+                          {user?.fullName}
                       </button>
                       
                   </div>

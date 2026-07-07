@@ -35,7 +35,7 @@ const Footer = () => {
           <FadeIn delay={0}>
             <div >
               <h3 className='text-3xl font-bold bg-linear-to-r from-primary/80 via-primary to-primary/80 bg-clip-text text-transparent mb-6'>
-                {user.fullName}
+                {user?.fullName}
               </h3>
               <p className='text-white/60 text-sm mb-6 leading-relaxed'>
                 crafting seamless digital experiences with modern web technology 
