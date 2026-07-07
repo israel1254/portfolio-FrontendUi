@@ -68,7 +68,7 @@ const ViewAllSkills = () => {
 
                                         <div className="space-y-5">
                                             {
-                                           skill.map((element) => {
+                                           skill?.map((element) => {
                                                const proficiency = getProficiencyLevel(element.proficiency);   
                                                   return (
                                                       <div key={element._id} className="space-y-2">

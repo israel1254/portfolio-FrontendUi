@@ -81,7 +81,7 @@ const Hero = () => {
                         </FadeIn>
 
                         <FadeIn delay={300}>
-                            <Link to={user.githubURL} target='_blank' >
+                            <Link to={user?.githubURL} target='_blank' >
                             <button className="inline-flex items-center gap-0 mb-12 group" >
                                 <div className="relative z-10 bg-white text-[#212121] rounded-[17px] px-[26px] py-[13px] text-base font-medium border border-white">Visit Github</div>
                                 </button>
@@ -113,39 +113,39 @@ const Hero = () => {
                                     </div>
 
                                     <div className="relative rounded-2xl overflow-hidden m-[1px] h-[calc(100%-2px)]">
-                                        <img src={user.avatar && user.avatar.url} alt={user?.fullName} className='w-full h-full object-cover' />
+                                        <img src={user?.avatar && user?.avatar.url} alt={user?.fullName} className='w-full h-full object-cover' />
                                     </div>
 
                                     <div className="absolute bottom-6 left-6 z-20">
                                         <FadeIn delay={500}>
                                             <div className="flex items-center gap-4 bg-black/40 backdrop-blur-sm border border-white/10 rounded-full px-6 py-3">
-                                                <Link to={user.linkedInURL} target='_blank'>
+                                                <Link to={user?.linkedInURL} target='_blank'>
                                                     <div className="w-6 h-6 flex items-center justify-center    hover:scale110 transition-transform duration-300">
                                                         <LinkedinIcon className="w-full h-full text-primary" />
                                                     </div>
                                                 </Link>
-                                                <Link to={user.facebookURL} target='_blank'>
+                                                <Link to={user?.facebookURL} target='_blank'>
                                                     <div className="w-6 h-6 flex items-center justify-center hover:scale110 transition-transform duration-300">
                                                         <SiFacebook  className="w-full h-full text-primary" />
                                                     </div>
                                                 </Link>
-                                                <Link to={user.githubURL} target='_blank'>
+                                                <Link to={user?.githubURL} target='_blank'>
                                                     <div className="w-6 h-6 flex items-center justify-center hover:scale110 transition-transform duration-300">
                                                         < SiGithub className="w-full h-full text-primary" />
                                                     </div>
                                                 </Link>
-                                                <Link to={user.instagramURL} target='_blank'>
+                                                <Link to={user?.instagramURL} target='_blank'>
                                                     <div className="w-6 h-6 flex items-center justify-center hover:scale110 transition-transform duration-300">
                                                         <SiInstagram className="w-full h-full text-primary" />
                                                     </div>
                                                 </Link>
                                               
-                                                <Link to={user.twitterURL} target='_blank'>
+                                                <Link to={user?.twitterURL} target='_blank'>
                                                     <div className="w-6 h-6 flex items-center justify-center hover:scale110 transition-transform duration-300">
                                                         <Twitter className="w-full h-full text-primary cursor-pointer" />
                                                     </div>
                                                 </Link>
-                                                <Link to={user.telegramURL} target='_blank'>
+                                                <Link to={user?.telegramURL} target='_blank'>
                                                     <div className="w-6 h-6 flex items-center justify-center hover:scale110 transition-transform duration-300">
                                                         <SiTelegram className="w-full h-full text-primary cursor-pointer" />
                                                     </div>

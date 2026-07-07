@@ -118,7 +118,7 @@ const Projects = () => {
               <div className="flex gap-6 pb-4">
                 {
                   filteredProjectS.map((project) => (
-                    <div key={project._id} className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] shrink-0 snap-start">
+                    <div key={project?._id} className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] shrink-0 snap-start">
                       <ProjectCard project={project} />
                     </div>
                   ))

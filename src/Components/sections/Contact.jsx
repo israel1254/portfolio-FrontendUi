@@ -136,7 +136,7 @@ const Contact = () => {
                                       </div>
                                       <div className="flex-1">
                                           <p className='text-sm text-white/60 mb-1'>Email</p>
-                                          <a href={`mailto:${PERSONAL_INFO}`} className='text-white hover:text-[#A8FF8D] transition-colors font-medium'>{user.email}</a>
+                                          <a href={`mailto:${PERSONAL_INFO}`} className='text-white hover:text-[#A8FF8D] transition-colors font-medium'>{user?.email}</a>
                                       </div>
                                   </div>
                                   <div className='absolute inset-0 bg-linear-to-br form-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-primary/5 rounded-2xl transition-all duration-300 pointer-events-none'/>

@@ -41,12 +41,12 @@ const Footer = () => {
                 crafting seamless digital experiences with modern web technology 
               </p>
               <div className="space-y-3">
-                <a href={`mailto:${user.email}`} className='group flex items-center gap-3 p-3 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 hover:border-primary/30 transition-all duration-300'>
+                <a href={`mailto:${user?.email}`} className='group flex items-center gap-3 p-3 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 hover:border-primary/30 transition-all duration-300'>
                   <div className="p-2 bg-primary/10 rounded-lg">
                     <Mail className='w-4 h-4 text-primary'/>
                   </div>
                   <span className='text-white/20 text-sm group-hover:text-white transition-colors'>
-                    {user.email}
+                    {user?.email}
                   </span>
                 </a>
                 <div className="flex items-center gap-3 p-3 bg-white/5 border-white/10 border rounded-xl">

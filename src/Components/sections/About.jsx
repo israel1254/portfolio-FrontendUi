@@ -99,7 +99,7 @@ const About = () => {
                       <FadeIn delay={200}>
                           <div className="flex flex-col gap-4">
                                   <p className='text-base text-white/70 leading-relaxed'>
-                                      {user.aboutMe} 
+                                      {user?.aboutMe} 
                                   </p> 
                           </div>
                       </FadeIn>
@@ -208,11 +208,11 @@ const About = () => {
                       </div>
                       <div className="grid grid-cols-2 md:grid-cols-6 gap-4 max-w-4xl">
                           {
-                              skills.map((skill, index) => (
+                              skills?.map((skill, index) => (
                                   <div key={index} className="group relative bg-white/5 hover:bg-white/10 border border-white/10 hover:border-primary/50 rounded-2xl p-6 flex flex-col items-center justify-center gap-3 transition-all duration-300 hover:scale-100">
                                       <skill.icon className="text-3xl text-primary"/>
                                       <div className="text-sm text-white/80 font-medium text-center">
-                                          {skill.name}
+                                          {skill?.name}
                                       </div>
 
                                       <div className="absolute inset-0 bg-linear-to-br from-primary/0 to-primary/0 group-hover:from-primary/10 group-hover:to-primary/10 rounded-2xl transition-all duration-300"></div>
