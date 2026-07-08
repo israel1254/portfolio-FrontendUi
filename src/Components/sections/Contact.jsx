@@ -14,7 +14,7 @@ const Contact = () => {
     const handleSendMessage = async (e) => {
         e.preventDefault();
         setLoading(true)
-        await axios.post("http://localhost:4100/api/v1/message/send", { senderName, email, message }, {
+        await axios.post("https://mymern-stack-website-backend.onrender.com/api/v1/message/send", { senderName, email, message }, {
             withCredentials: true,
             headers: { "Content-Type": "application/json" },
         }).then((res) => {
